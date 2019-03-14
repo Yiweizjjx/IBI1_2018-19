@@ -2,13 +2,13 @@
 """
 Created on Wed Mar 13 10:15:36 2019
 
-@author: lenovo
+@author: Yiwei
 """
 #start with a positive integer x (x is no larger than 8192 = 2**13)
 x = 2019
 i = 13
 a = str(2**i)
-b = str(x )
+b = str(x)
 while x != 0:
     if x < 2**i:
         i=i-1

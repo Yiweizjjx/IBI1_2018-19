@@ -2,7 +2,7 @@
 """
 Created on Wed Mar 13 09:36:49 2019
 
-@author: lenovo
+@author: Yiwei
 """
 
 #strat with a positive integer n
