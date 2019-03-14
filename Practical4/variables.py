@@ -5,8 +5,8 @@ Created on Wed Mar 13 09:15:22 2019
 @author: Yiwei
 """
 
-a = 233
-b = 233233
+a = 234
+b = 234234
 print(b%7)
 c = b/7
 d = c/11
