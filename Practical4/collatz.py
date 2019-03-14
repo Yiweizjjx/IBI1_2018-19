@@ -10,9 +10,9 @@ n = 10
 while n != 1:
 # if n is even, divide n by 2
 # if n is odd, multiple n by 3 and add 1
- if n%2 == 0:
+  if n%2 == 0:
     n = n/2
- else:
+  else:
     n = n*3 + 1
 # display and run when you reach 1 for the first time
- print(n)
+  print(n)
