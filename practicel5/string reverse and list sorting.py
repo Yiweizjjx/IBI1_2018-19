@@ -9,13 +9,10 @@ s = "but soft what light in yonder window breaks"
 L1 = s.split(" ")
 L2 = L1.copy()
 L3 = []
-i = []
-i = L2(0)
 for i in L2:
-    i.reverse()
+    L1.remove(i)
+    i = i[::-1]
     L3.append(i)
-    L2.remove(i)
-    i = L2(0)
-L4 = L3.sort()
-L5 = L4.reverse()
-print(L5)
+L4 = sorted(L3)
+L4.reverse()
+print(L4)
