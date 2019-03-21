@@ -13,6 +13,6 @@ for i in L2:
     L1.remove(i)
     i = i[::-1]
     L3.append(i)
-L4 = sorted(L3)
-L4.reverse()
-print(L4)
+L3.sort()
+L3.reverse()
+print(L3)
