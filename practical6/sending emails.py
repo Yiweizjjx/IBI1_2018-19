@@ -27,6 +27,8 @@ from email.mime.text import MIMEText
 from email.header import Header
 fhand1 = open('body.txt', 'r') 
 inp = fhand1.read()
+print('From: 3180111428@zju.edu.cn')
+print('Password: ******')
 for i in range(0, len(address_list)):    
     from_address = '3180111428@zju.edu.cn'
     to_address = address_list[i]
@@ -36,5 +38,15 @@ for i in range(0, len(address_list)):
     msg['To'] =  Header(name_list[i], 'utf-8')
     msg['Subject'] = Header(subject_list[i], 'utf-8')    
     text = msg.as_string()
+    try:
+       server = smtplib.SMTP('smtp.zju.edu.cn',25)
+       server.ehlo()
+       server.starttls()
+       server.login('3180111428','******')
+       server.sendmail(from_address, to_address, text)
+       print('From: 3180111428@zju.edu.cn')
+       print('Password: ******')
+       print('Mail sent successfully!')
+    finally:
+       server.quit()
 
-print(body)
