@@ -6,6 +6,7 @@ Created on Wed Mar 20 09:05:53 2019
 """
 # give me a sequence of DNA
 s="ATGCTTCAGAAAGGTCTTACG"
+# convert the sequence into list
 L1=list(s)
 mydict = {}
 for word in L1:
