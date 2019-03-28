@@ -5,9 +5,8 @@ Created on Wed Mar 27 09:01:57 2019
 @author: Yiwei
 """
 import re
+# open the file
 fhand = open('address_information.csv', 'r')
-x = str() 
-L1 = []
 name_list = []
 address_list = []
 subject_list = []
@@ -25,6 +24,7 @@ for a in fhand:
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
+# read the file into a single string
 fhand1 = open('body.txt', 'r') 
 inp = fhand1.read()
 print('From: 3180111428@zju.edu.cn')
@@ -37,14 +37,12 @@ for i in range(0, len(address_list)):
     msg['From'] = Header("3180111428", 'utf-8')
     msg['To'] =  Header(name_list[i], 'utf-8')
     msg['Subject'] = Header(subject_list[i], 'utf-8')    
-    text = msg.as_string()
     try:
        server = smtplib.SMTP('smtp.zju.edu.cn',25)
-       server.ehlo()
-       server.starttls()
        server.login('3180111428','******')
-       server.sendmail(from_address, to_address, text)
-       print('Mail sent successfully!')
-    finally:
+       server.sendmail(from_address, to_address, msg.as_string())
        server.quit()
+       print('Mail sent successfully!')
+    except smtplib.SMTPEception:
+       print('Mail delevery failed!')
 
