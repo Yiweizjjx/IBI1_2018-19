@@ -44,8 +44,6 @@ for i in range(0, len(address_list)):
        server.starttls()
        server.login('3180111428','******')
        server.sendmail(from_address, to_address, text)
-       print('From: 3180111428@zju.edu.cn')
-       print('Password: ******')
        print('Mail sent successfully!')
     finally:
        server.quit()
