@@ -5,9 +5,8 @@ Created on Wed Apr  3 09:08:42 2019
 @author: Yiwei
 """
 
-# input numbers
-L1=input("Please input numbers to computer 24:(use ',' to divide them)" )
 
+import re
 from operator import mul, sub, add
  
  
@@ -20,6 +19,7 @@ ops = {mul: '*', div: '/', sub: '-', add: '+'}
  
 def solve24(num, how, target):
     if len(num) == 1:
+        int(num)
         if round(num[0], 5) == round(target, 5):
             yield str(how[0]).replace(',', '').replace("'", '')
     else:
@@ -31,8 +31,11 @@ def solve24(num, how, target):
                         new_how = [h for k, h in enumerate(how) if k != i and k != j] + [(how[i], ops[op], how[j])]
                         yield from solve24(new_num, new_how, target)
  
-
-for nums in tests:
+# input numbers
+str_number=input("Please input numbers to computer 24:(use ',' to divide them)" )
+L1=re.split(r',',str_number)
+print(L1)
+for nums in L1:
     print(nums, end=' : ')
     try:
         print(next(solve24(nums, nums, 24)))
