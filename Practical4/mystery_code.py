@@ -28,4 +28,3 @@ while p==False:
 
  # output the prime number    
 print(n)
-            
