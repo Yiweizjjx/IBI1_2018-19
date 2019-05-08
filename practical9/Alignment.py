@@ -13,27 +13,19 @@ from Bio.SubsMat import MatrixInfo
 BLOSUM62 = MatrixInfo.blosum62
 
 
-def score_pairwise(b, c, BLOSUM62):
-    score = 0
-    for i in range(len(b)):
-        pair = (b[i], c[i])
-        if pair not in BLOSUM62:
-            a = BLOSUM62[(tuple(reversed(pair)))]
+def compare(seqa, seqb):
+    score=0 
+    for i in range(0,len(seqa)):
+        if (seqa[i], seqb[i]) in BLOSUM62:
+            a=BLOSUM62[seqa[i],seqb[i]]
+            score += a
         else:
-            a = BLOSUM62[pair]
-        score += a
+            a=BLOSUM62[seqb[i],seqa[i]]
+            score += a
     return score
 
-score_pairwise(seq1, seq2, BLOSUM62)
-#使用正则表达式
-'''
-def score_match(pair, BLOSUM62):
-    if pair not in BLOSUM62:
-        return BLOSUM62[(tuple(reversed(pair)))]
-    else:
-        return BLOSUM62[pair]
+print('The score for two sequences is', compare(seq1, seq2))
 
-score_pairwise(seq1, seq2, BLOSUM62)
-'''
+
 
  
