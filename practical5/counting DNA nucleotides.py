@@ -4,8 +4,8 @@ Created on Wed Mar 20 09:05:53 2019
 
 @author: Yiwei
 """
-# give me a sequence of DNA
-s="ATGCTTCAGAAAGGTCTTACG"
+import matplotlib.pyplot as plt
+s=input('Please give me a sequence of DNA :')
 # convert the sequence into list
 L1=list(s)
 mydict = {}
@@ -16,9 +16,9 @@ for word in L1:
         else:
             mydict[word] = 1
 
-import matplotlib.pyplot as plt
 labels = mydict.keys()
 sizes= mydict.values()
 plt.pie(sizes, labels=labels, autopct='%1.1f%%', shadow=False, startangle=90)
 plt.axis('equal')
 plt.show()
+print(mydict)
