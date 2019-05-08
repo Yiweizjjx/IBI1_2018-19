@@ -4,8 +4,7 @@ Created on Wed Mar 20 09:51:42 2019
 
 @author: Yiwei
 """
-# give me a string of words
-s = "but soft what light in yonder window breaks"
+s = input('give me a string of words :') 
 # split the string
 L1 = s.split(" ")
 # create an empty list L2 
