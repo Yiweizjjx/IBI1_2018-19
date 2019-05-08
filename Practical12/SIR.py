@@ -5,7 +5,6 @@ Created on Wed May  8 09:12:45 2019
 @author: Yiwei
 """
 # import necessary libraries 
-
 import numpy as np 
 import matplotlib . pyplot as plt
 a=9999
@@ -28,7 +27,7 @@ for m in range(1,1001):
     sus=np.append(sus,a)
     inf=np.append(inf,b)
     rec=np.append(rec,c)
-
+# plot results
 plt.figure ( figsize =(6 ,4) , dpi=150)
 plt.title('SIR model')
 plt.plot(sus, label='susceptible')
