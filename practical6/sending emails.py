@@ -27,20 +27,23 @@ from email.header import Header
 # read the file into a single string
 fhand1 = open('body.txt', 'r') 
 inp = fhand1.read()
-print('From: 3180111428@zju.edu.cn')
-print('Password: ******')
+username=input('From:')
+loginname=username.split('@')[0]
+password=input('Password:')
 for i in range(0, len(address_list)):    
     from_address = '3180111428@zju.edu.cn'
     to_address = address_list[i]
     body = re.sub(r'User', name_list[i], inp)
     msg = MIMEText(body, 'plain', 'utf-8')
-    msg['From'] = Header("3180111428", 'utf-8')
-    msg['To'] =  Header(name_list[i], 'utf-8')
+    to_name=Header(name_list[i],'utf-8')
+    to_name.append(to_address,'ascii')
+    msg['From'] = Header("Yiwei", 'utf-8')
+    msg['To'] =  to_name
     msg['Subject'] = Header(subject_list[i], 'utf-8')    
     try:
        server = smtplib.SMTP('smtp.zju.edu.cn',25)
-       server.login('3180111428','******')
-       server.sendmail(from_address, to_address, msg.as_string())
+       server.login(loginname,password)
+       server.sendmail(from_address, [to_address], msg.as_string())
        server.quit()
        print('Mail sent successfully!')
     except smtplib.SMTPEception:
