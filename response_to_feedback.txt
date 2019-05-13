@@ -1,0 +1,4 @@
+Response to my formative feedback
+In mystery_code.py of week 4, I have changed the answer to what the mystery code script does. That is, "output one prime number between 1 and 100 (may output 1)".
+In counting DNA nucleotides.py of week 5, I have added the "input" function to ask the user to input a DNA sequence, instead of hard-coding the DNA sequence in the script.
+In string reverse and list sorting.py of week 5, I have added the "input" function to ask the user for input instead of hard-coding the string.
