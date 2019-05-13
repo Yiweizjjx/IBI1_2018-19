@@ -20,7 +20,7 @@ pro=a/N
 for i in range(0,10):
   a=int(a-i*0.1*N)
   for m in range(1,1001):
-    d=np.random.choice(range(2),a,p=[0.3*pro,1-0.3*pro])
+    d=np.random.choice(range(2),a,p=[inf_pro*pro,1-inf_pro*pro])
     e=np.random.choice(range(2),b,p=[rec_pro,1-rec_pro])
     ninf=np.sum(d==0)
     nrec=np.sum(e==0)
@@ -37,7 +37,7 @@ for i in range(0,10):
   plt.legend() 
   plt.xlabel('time')
   plt.ylabel('number of people')
-  plt.show()
+plt.show()
 '''
 # plot results
 plt.figure ( figsize =(6 ,4) , dpi=150)
