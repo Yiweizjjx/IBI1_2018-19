@@ -25,7 +25,7 @@ for m in range(1,1001):
     e=np.random.choice(range(2),b,p=[rec_pro,1-rec_pro])
 # get the number of newly infected people
     ninf=np.sum(d==0)
-# get the number of recovered people
+# get the number of newly recovered people
     nrec=np.sum(e==0)
     a-=ninf
     b=b+ninf-nrec

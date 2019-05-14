@@ -4,50 +4,43 @@ Created on Wed May  8 11:41:45 2019
 
 @author: lenovo
 """
+import numpy as np
+import matplotlib.pyplot as plt
 
-import numpy as np 
-import matplotlib . pyplot as plt
-a=9999
-b=1
-c=0
-N=10000
-inf_pro=0.3
-rec_pro=0.05
-sus=np.array([a])
-inf=np.array([b])
-rec=np.array([c])
-pro=a/N
-for i in range(0,10):
-  a=int(a-i*0.1*N)
-  for m in range(1,1001):
-    d=np.random.choice(range(2),a,p=[inf_pro*pro,1-inf_pro*pro])
-    e=np.random.choice(range(2),b,p=[rec_pro,1-rec_pro])
-    ninf=np.sum(d==0)
-    nrec=np.sum(e==0)
-    a-=ninf
-    b=b+ninf-nrec
-    c+=nrec
-    pro=a/N
-    sus=np.append(sus,a)
-    inf=np.append(inf,b)
-    rec=np.append(rec,c)
-  plt.figure ( figsize =(6 ,4) , dpi=150)
-  plt.title('SIR model')
-  plt.plot(sus, label='susceptible')
-  plt.legend() 
-  plt.xlabel('time')
-  plt.ylabel('number of people')
-plt.show()
-'''
+N = 10000 # total number of the people in the popluation
+sus = []
+inf = []
+rec = []
+list_inf=[]
+inf_pro = 0.3 # infection probability
+rec_pro = 0.05 # recovery probability
+
+for i in range(0,110,10):
+    vc =int(N*i/100) # an additional group of vaccinated people
+    rec=[0]
+    if N==vc:  # all people are vaccinated
+        sus=[0]
+        inf=[0] 
+    else:
+        sus=[N-vc-1]
+        inf=[1]    
+    for m in range(1,1001):
+        d=np.random.choice(range(2),sus[m-1],p=[inf_pro*inf[m-1]/N,1-inf_pro*inf[m-1]/N])
+        e=np.random.choice(range(2),inf[m-1],p=[rec_pro,1-rec_pro])
+        ninf=np.sum(d==0) # get the number of newly infected people
+        nrec=np.sum(e==0) # get the number of newly recovered people
+        sus.append(sus[m-1]-ninf)
+        inf.append(inf[m-1]+ninf-nrec)
+        rec.append(rec[m-1]+nrec)        
+    list_inf.append(inf)
 # plot results
-plt.figure ( figsize =(6 ,4) , dpi=150)
-plt.title('SIR model')
-plt.plot(sus, label='susceptible')
-plt.plot(inf, label='infected')
-plt.plot(rec,  label='recovered')
-plt.legend() 
+plt.figure(figsize=(6,4),dpi=150)
+plt.title('SIR model with different vaccination rates')
+x = range(0,1001)
+# plot graphs in one figure
+for u in range(0,11):
+    plt.plot(x,list_inf[u],label=str(u*10)+'%') 
 plt.xlabel('time')
 plt.ylabel('number of people')
-plt.show()
-'''
-
+plt.legend()
+plt.savefig("SIR_vaccination", type="png")
