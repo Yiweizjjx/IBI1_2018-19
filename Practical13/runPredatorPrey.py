@@ -5,6 +5,7 @@ Created on Wed May 15 09:08:34 2019
 @author: Yiwei
 """
 import os
+'''
 os.chdir('D:/IBI1/practical/IBI1_2018-19/Practical13') 
 
 def xml_to_cps():
@@ -56,3 +57,5 @@ def xml_to_cps():
     cpsFile.close()
 
 xml_to_cps()
+'''
+os.system('D:/ICMB1/practical/COPASI 4.24.197/bin/CopasiSE predator−prey.cps')
