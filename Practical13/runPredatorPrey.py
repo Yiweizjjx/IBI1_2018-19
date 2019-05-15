@@ -61,16 +61,15 @@ xml_to_cps()
 os.system("CopasiSE.exe predator−prey.cps")
 
 # alter the SBML ﬁle
-pm={}
+pm={} # create a dictionary to store the four parameters
 DOMTree = xml.dom.minidom.parse("predator-prey.xml")
 collection = DOMTree.documentElement 
 para = collection.getElementsByTagName('parameter')
 for i in range(0,4):
-    temp = np.random.sample()
+    num = np.random.sample()
     pm_name = para[i].getAttribute('id')
-    print(pm_name,':',temp)
-    pm[pm_name]=temp
-    para[i].setAttribute('value',str(temp))
+    pm[pm_name]=num
+    para[i].setAttribute('value',str(num))
 filexml = open('predator-prey.xml','w')
 DOMTree.writexml(filexml)
 filexml.close()
@@ -91,8 +90,8 @@ for line in data:
         results[1].append(result[1])
         results[2].append(result[2])
         
-results = np.array(results)
-results = results.astype(np.float)
+results = np.array(results) # transform it into a numpy array
+results = results.astype(np.float) # transform the numbers into actual numbers 
 # plot a time course of the predator and prey population
 plt.title('Time course')
 plt.plot(results[0],results[1],label='Predator (b=' + str(pm['k_predator_breeds']) + ', d=' + str(pm['k_predator_dies']) + ')')
