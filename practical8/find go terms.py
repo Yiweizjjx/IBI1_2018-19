@@ -7,8 +7,6 @@ Created on Wed Apr 10 09:04:54 2019
 import xml.dom.minidom
 import re
 import pandas as pd
-import os
-os.chdir('D:\IBI1\practical\IBI1_2018-19\practical8') # change the working directory
 
 # open the file
 # create the DOM tree
