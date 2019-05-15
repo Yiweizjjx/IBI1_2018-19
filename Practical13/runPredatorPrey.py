@@ -5,14 +5,14 @@ Created on Wed May 15 09:08:34 2019
 @author: Yiwei
 """
 import os
-os.chdir() 
+os.chdir('D:/IBI1/practical/IBI1_2018-19/Practical13') 
 
 def xml_to_cps():
     import os
     import xml.dom.minidom
     
     # first, convert xml to cps 
-    os.system("/usr/bin/COPASI-4.16.104-Linux-64bit/bin/CopasiSE -i predator-prey.xml -s predator-prey.cps")
+    os.system("CopasiSE.exe -i predator-prey.xml -s predator-prey.cps")
     
     # now comes the painful part. Just copy and paste this ok
     
@@ -51,7 +51,8 @@ def xml_to_cps():
     listOfReports  =  cpsCollection.getElementsByTagName("ListOfReports")[0]
     listOfReports.appendChild(report)
     
-    cpsFile = open("predator-prey.cps","w")
+    cpsFile = open("predator-prey.cps","w",encoding='utf-8')
     cpsTree.writexml(cpsFile)
     cpsFile.close()
+
 xml_to_cps()
