@@ -107,3 +107,10 @@ plt.plot(results[2],results[1])
 plt.xlabel('predator popluation')
 plt.ylabel('prey popluation')
 plt.show()
+
+# asses the results
+'''
+1. run 100 simulations with 100 diﬀerent parameter combinations
+2. record the number of predators and prey
+3. plot the outcomes in one figure  
+'''
