@@ -28,11 +28,6 @@ print(L1)
 print(L2)
 '''
 ###
-filePath=r'D:\IBI1\practical'
-resName='autophagosome.xlsx'
-res=filePath+'/'+resName
-
-
 def Child(id, resultSet):
     for t in go:
         parents = t.getElementsByTagName('is_a')
@@ -63,6 +58,5 @@ for term in go:
         df = df.append(pd.DataFrame({'id':[id], 'name':[name], 'definition':[defstr], 'childnodes':[len(resultSet)]}))
         print(id, len(resultSet))
 
-df.to_excel(res, index=False)
-
-        
+fname='autophagosome.xlsx'
+df.to_excel(fname, index=False)
