@@ -21,6 +21,8 @@ for a in fhand:
          subject_list += [mylist[2]]
        else:
          print(mylist[1], ':Wrong Address!')
+fhand.close()
+
 #send the email
 import smtplib
 from email.mime.text import MIMEText
@@ -48,4 +50,4 @@ for i in range(0, len(address_list)):
        print('Mail sent successfully!')
     except smtplib.SMTPEception:
        print('Mail delevery failed!')
-
+fhand1.close()
