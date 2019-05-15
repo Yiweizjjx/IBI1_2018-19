@@ -4,20 +4,20 @@ Created on Wed May 15 09:08:34 2019
 
 @author: Yiwei
 """
-
+# run a Copasi ﬁle from within Python
 import os
-'''
+import numpy as np
+import matplotlib . pyplot as plt
+import xml.dom.minidom
+
 os.chdir('D:/IBI1/practical/IBI1_2018-19/Practical13') 
 
 def xml_to_cps():
     import os
     import xml.dom.minidom
     
-    # first, convert xml to cps 
     os.system("CopasiSE.exe -i predator-prey.xml -s predator-prey.cps")
-    
-    # now comes the painful part. Just copy and paste this ok
-    
+        
     cpsTree = xml.dom.minidom.parse("predator-prey.cps")
     cpsCollection = cpsTree.documentElement
     
@@ -58,12 +58,24 @@ def xml_to_cps():
     cpsFile.close()
 
 xml_to_cps()
-'''
-#os.system('CopasiSE.exe predator−prey.cps')
+os.system("CopasiSE.exe predator−prey.cps")
 
-import numpy as np
-import matplotlib . pyplot as plt
+# alter the SBML ﬁle
+pm={}
+DOMTree = xml.dom.minidom.parse("predator-prey.xml")
+collection = DOMTree.documentElement 
+para = collection.getElementsByTagName('parameter')
+for i in range(0,4):
+    temp = np.random.sample()
+    pm_name = para[i].getAttribute('id')
+    print(pm_name,':',temp)
+    pm[pm_name]=temp
+    para[i].setAttribute('value',str(temp))
+filexml = open('predator-prey.xml','w')
+DOMTree.writexml(filexml)
+filexml.close()
 
+# read and plot simulation results
 data=open('modelResults.csv', 'r')
 count=0
 results=[[],[],[]]
@@ -83,8 +95,8 @@ results = np.array(results)
 results = results.astype(np.float)
 # plot a time course of the predator and prey population
 plt.title('Time course')
-plt.plot(results[0],results[1],label='Predator (b=0.02, d=0.4')
-plt.plot(results[0],results[2],label='Prey (b=0.1, d=0.02)')   
+plt.plot(results[0],results[1],label='Predator (b=' + str(pm['k_predator_breeds']) + ', d=' + str(pm['k_predator_dies']) + ')')
+plt.plot(results[0],results[2],label='Prey (b=' + str(pm['k_prey_breeds']) + ', d=' + str(pm['k_prey_dies']) + ')')
 plt.xlabel('time')
 plt.ylabel('population')
 plt.legend()
@@ -95,16 +107,3 @@ plt.plot(results[2],results[1])
 plt.xlabel('predator popluation')
 plt.ylabel('prey popluation')
 plt.show()
-
-import xml.dom.minidom
-'''
-k_predator_breeds=0.1
-k_predator_dies=0.2
-k_prey_breeds=0.3
-k_prey_dies=0.4
-'''
-DOMTree = xml.dom.minidom.parse("predator-prey.xml")
-collection = DOMTree.documentElement 
-para = collection.getElementsByTagName("listOfParameters")
-for j in para:
-    setAttribute
