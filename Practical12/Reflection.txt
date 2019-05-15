@@ -1,0 +1,4 @@
+It was quite hard at the beginning, because I had no idea to use arrays to track the variables. 
+Fortunately, with the help of classmates and online references, I managed to use arrays for the variables and record the output of each time step.
+Although it took me about two hours to finish the first problem, I really enjoyed the process of thinking and discussing with classmates.
+The most important thing I learned was the random.choice function. It was really hepful in probabilistic models.
