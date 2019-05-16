@@ -8,15 +8,15 @@ Created on Wed Apr 17 09:12:01 2019
 fhand=open('BLOSUM62.txt', 'r')
 content=fhand.read()
 lines=content.strip().split('\n')
-header=lines.pop(0)
-columns=header.split()
-matrix={}
+header=lines.pop(0) # get the first column
+columns=header.split() # a list containg every letter in the first column 
+matrix={} # create a dictionary to store BLOSUM62 matrix
 for i in lines:
     entries=i.split()
-    row=entries.pop(0)
+    row=entries.pop(0) # get one score once
     matrix[row]={}
     for column in columns:
-        matrix[row][column]=entries.pop(0)
+        matrix[row][column]=entries.pop(0) # the score for each match is stored in the dictionary
 
 # read three sequences
 fh1=open('seq_human.txt', 'r')
@@ -39,11 +39,11 @@ for i in range(len(seq_human)):
     if seq_huamn[i] != seq_mouse[i]:
         diff+=1
         if int(x)<0:
-            diffseq.append('*')
+            diffseq.append('*') # * represents BLOSUM score <0
         else:
-            diffseq.append('+')
+            diffseq.append('+') # + represents BLOSUM score >=0
     else:
-        diffseq.append(seq_human[i])
+        diffseq.append(seq_human[i]) # indicate alignment with the same amino acid
         
 seq_human=''.join(seq_human)  
 diffseq=''.join(diffseq)
