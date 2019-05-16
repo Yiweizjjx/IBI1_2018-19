@@ -58,7 +58,7 @@ def xml_to_cps():
     cpsFile.close()
 
 xml_to_cps()
-os.system("CopasiSE.exe predator−prey.cps")
+os.system('CopasiSE.exe predator-prey.cps')
 
 # alter the SBML ﬁle
 pm={} # create a dictionary to store the four parameters
@@ -107,9 +107,9 @@ plt.xlabel('predator popluation')
 plt.ylabel('prey popluation')
 plt.show()
 
-# asses the results
+# run many simulations & asses the results
 '''
-1. run 100 simulations with 100 diﬀerent parameter combinations
+1. use loop to run 100 simulations with 100 diﬀerent parameter combinations
 2. record the number of predators and prey
 3. plot the outcomes in one figure  
 '''
