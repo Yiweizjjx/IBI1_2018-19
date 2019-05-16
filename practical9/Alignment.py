@@ -28,17 +28,86 @@ seq_mouse=fh2.read()
 fh3=open('seq_random.txt', 'r')
 seq_random=fh3.read()
 
-def compare(seq1,seq2):
-    seq1=list(seq1)
-    score=0
-    diff=0
-    for i in range(len(seq1)):
-        x=matrix[seq1[i]][seq2[i]]
-        score+=int(x)
-        if seq1[i] != seq2[i]:
-            diff+=1
-    print(seq1,'\n', seq2)
-    print('BLOSUM score:', score)
-    print('Normalised BLOSUM score:', score/len(seq1))
-    print('Identity:', '{:.2%}'.format(1-diff/len(seq1)))
-compare(seq_human,seq_mouse)
+# mouse human comparison
+score=0
+diff=0
+diffseq=[]
+seq_huamn=list(seq_human)
+for i in range(len(seq_human)):
+    x=matrix[seq_human[i]][seq_mouse[i]]
+    score+=int(x)
+    if seq_huamn[i] != seq_mouse[i]:
+        diff+=1
+        if int(x)<0:
+            diffseq.append('*')
+        else:
+            diffseq.append('+')
+    else:
+        diffseq.append(seq_human[i])
+        
+seq_human=''.join(seq_human)  
+diffseq=''.join(diffseq)
+nscore=score/len(seq_human)  
+identity=1-diff/len(seq_human)
+print('\nSOD2_human (NP_000627.2)\n', seq_human)
+print('\nSOD2_mouse (NP_038699.2)\n', seq_mouse)
+print('\n'+diffseq)
+print('\nBLOSUM62 score:', score) 
+print('Normalized BLOSUM62 score:', nscore)
+print('Identity:', '{:.2%}'.format(identity))    
+
+# mouse random seq comparison
+score=0
+diff=0
+diffseq=[]
+seq_mouse=list(seq_mouse)
+for i in range(len(seq_mouse)):
+    x=matrix[seq_mouse[i]][seq_random[i]]
+    score+=int(x)
+    if seq_mouse[i] != seq_random[i]:
+        diff+=1
+        if int(x)<0:
+            diffseq.append('*')
+        else:
+            diffseq.append('+')
+    else:
+        diffseq.append(seq_mouse[i])
+        
+seq_mouse=''.join(seq_mouse)  
+diffseq=''.join(diffseq)
+nscore=score/len(seq_mouse)  
+identity=1-diff/len(seq_mouse)
+print('\nSOD2_mouse (NP_038699.2)\n', seq_mouse)
+print('\nRandomSeq\n', seq_random)
+print('\n'+diffseq)
+print('\nBLOSUM62 score:', score) 
+print('Normalized BLOSUM62 score:', nscore)
+print('Identity:', '{:.2%}'.format(identity)) 
+
+# human random seq comparison
+score=0
+diff=0
+diffseq=[]
+seq_huamn=list(seq_human)
+for i in range(len(seq_human)):
+    x=matrix[seq_human[i]][seq_random[i]]
+    score+=int(x)
+    if seq_huamn[i] != seq_random[i]:
+        diff+=1
+        if int(x)<0:
+            diffseq.append('*')
+        else:
+            diffseq.append('+')
+    else:
+        diffseq.append(seq_human[i])
+        
+seq_human=''.join(seq_human)  
+diffseq=''.join(diffseq)
+nscore=score/len(seq_human)  
+identity=1-diff/len(seq_human)
+print('\nSOD2_human (NP_038699.2)\n', seq_human)
+print('\nRandomSeq\n', seq_random)
+print('\n'+diffseq)
+print('\nBLOSUM62 score:', score) 
+print('Normalized BLOSUM62 score:', nscore)
+print('Identity:', '{:.2%}'.format(identity))        
