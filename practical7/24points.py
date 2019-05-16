@@ -14,7 +14,7 @@ while i: # if i is not equal to 0,then loop
     data = input('Please input numbers to computer 24:(use \',\' to divide them)\n')
     numList = data.split(',')
     for char in numList:
-        if re_numtest.match(char): 
+        if re_numtest.match(char): # check the input number
             continue
         else: 
             print('The input number must be intergers from 1 to 23')
