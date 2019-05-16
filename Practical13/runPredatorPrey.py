@@ -109,7 +109,8 @@ plt.show()
 
 # run many simulations & asses the results
 '''
-1. use loop to run 100 simulations with 100 diﬀerent parameter combinations
-2. record the number of predators and prey
-3. plot the outcomes in one figure  
+1. Use loop to run 100 simulations with 100 diﬀerent parameter combinations
+2. Use lists to record the number of predators and prey
+3. With list.index(max(list)) and list.index(min(list)), the maximum number of predators and the the minimun number of prey can be obtained
+4. Print the outcomes
 '''
