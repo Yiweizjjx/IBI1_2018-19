@@ -58,7 +58,7 @@ def dfs(n):
             num[i] = a*b
             if(dfs(n-1)): 
                 return 1  
-            
+            # test if the dividend is zero
             if a:
                 # floats are not precise
                 num[i] = Fraction(b,a)
