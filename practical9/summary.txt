@@ -1,0 +1,20 @@
+Summary of findings
+
+mouse human comparison
+BLOSUM62 score: 1091 
+Noramlised BLOSUM62 score: 4.914
+Identity: 89.64%
+
+mouse random seq comparison
+BLOSUM62 score: -250 
+Noramlised BLOSUM62 score: -1.126
+Identity: 5.86%
+
+human random seq comparison
+BLOSUM62 score: -250 
+Noramlised BLOSUM62 score: -1.126
+Identity: 5.41%
+
+BLOSUM score has been normalised to sequence length. With this normalised score, we can compare the similarity between two sequnences of different length in a meaningful way.
+Sequence for human SOD62 protein and Sequence for mouse SOD62 protein are quite similar, as the identity value is about 90%.
+It is noticeable that mouse random seq comparison and human random seq comparison have the same BLOSUM62 score with different identity values. So, we can not simply compare two sequences merely with BLOSUM62 score. Other parameters are needed to have a better evaluation of two sequences.
